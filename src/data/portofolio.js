@@ -12,7 +12,7 @@ export const developer = {
   github: "https://github.com/8ballali",
   linkedin: "https://linkedin.com/in/saidilmuna",
   resumeUrl: "#",
-  photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80"
+  photo: "/developer-portrait.jpg"
 };
 
 export const projects = [

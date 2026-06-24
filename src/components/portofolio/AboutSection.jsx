@@ -16,7 +16,7 @@ export default function AboutSection({ developer }) {
             About
           </p>
           <h2 className="font-serif text-[clamp(2rem,5vw,3rem)] font-bold uppercase text-[#1A1A1A] tracking-tight">
-            About The Developer
+            About Me
           </h2>
         </motion.div>
 
