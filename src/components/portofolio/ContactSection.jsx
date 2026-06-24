@@ -8,6 +8,9 @@ export default function ContactSection({ developer }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [focused, setFocused] = useState(null);
+  const [submitError, setSubmitError] = useState("");
+
+  const submissionUrl = `https://formsubmit.co/ajax/${encodeURIComponent(developer.email)}`;
 
   const validate = () => {
     const e = {};
@@ -20,12 +23,42 @@ export default function ContactSection({ developer }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      setSubmitError("");
+      return;
+    }
     setErrors({});
+    setSubmitError("");
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitting(false);
-    setSubmitted(true);
+
+    try {
+      const response = await fetch(submissionUrl, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `Portfolio message from ${form.name}`,
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setSubmitted(true);
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setSubmitError("Message could not be sent right now. Please use the email link on the right.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputBase = "w-full bg-transparent border-0 border-b pb-3 pt-1 text-base text-[#1A1A1A] font-light outline-none placeholder:text-[#D1CDC7] transition-all duration-300";
@@ -77,6 +110,11 @@ export default function ContactSection({ developer }) {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10" noValidate>
+                {submitError && (
+                  <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    {submitError}
+                  </div>
+                )}
                 {/* Name + Email row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div>
