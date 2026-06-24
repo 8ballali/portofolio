@@ -1,5 +1,5 @@
 export const developer = {
-  name: "Muhammad Iqbal",
+  name: "Muhammad\nIqbal Ali\nSa'idil Muna",
   title: "Full Stack Developer — Backend & Systems",
   headline: "Architecting robust digital foundations.",
   subheadline: "I own the entire backend: APIs, databases, infrastructure, and integrations end-to-end.",
@@ -11,7 +11,7 @@ export const developer = {
   email: "iqbalalisaidil@gmail.com",
   github: "https://github.com/8ballali",
   linkedin: "https://linkedin.com/in/saidilmuna",
-  resumeUrl: "#",
+  resumeUrl: "https://drive.google.com/drive/folders/15ctYFDGCDaSfAweZ3LrhubEwEjjcLMvi?usp=sharing",
   photo: "/developer-portrait.jpg"
 };
 
@@ -71,8 +71,8 @@ export const projects = [
     tags: ["Go", "Flask", "Node.js", "Kafka", "Kubernetes"],
     shortDescription: "Designed the entire system architecture for a production-grade super-app covering Ride-Hailing, Food Delivery, and Logistics — decomposed from monolith into a high-throughput, event-driven microservices platform.",
     iconType: "cloud",
-    downloadLabel: "Download Architecture Doc",
-    downloadUrl: "#",
+    downloadLabel: "Open Architecture Folder",
+    downloadUrl: "https://drive.google.com/drive/folders/1e31xYlYb3nKTkt8H3DckxdALekEMLNHP?usp=sharing",
     problem: "Building a production-grade mobile super-app (Ride-Hailing, Food Delivery, Logistics) from scratch demanded an architecture capable of real-time driver matching, low-latency GPS tracking, high-throughput order processing, and horizontal scalability — all without a monolith that would collapse under load.",
     solution: "Designed the entire system architecture from scratch. Decomposed into event-driven microservices: Flask (Auth), Go (Booking & Fare), Go (Matching), Node.js (Tracking), Java Spring Boot (Payment), fronted by KONG API Gateway. Chose best-fit databases per domain: PostgreSQL for relational data, MongoDB for catalogs/notifications, ElasticSearch for discovery, TimescaleDB for GPS time-series. Apache Kafka for event streaming, Redis Cluster for spatial coordinates, session management, and surge pricing. Deployed on Kubernetes with HPA, GitHub Actions CI/CD, Cloudflare CDN/WAF, and AWS infrastructure.",
     impact: "A fully event-driven architecture capable of handling high-throughput ride-hailing, food delivery, and logistics workloads simultaneously. Each service scales independently via Kubernetes HPA. Real-time GPS tracking, low-latency driver matching, and sub-second search powered by the right storage engine for each use case.",
@@ -82,21 +82,27 @@ export const projects = [
 
 export const skills = [
   { category: "Languages", items: [
-    { name: "Node.js", icon: "server" },
+    { name: "Javascript", icon: "server" },
     { name: "Python", icon: "code-2" },
     { name: "Go", icon: "zap" },
-    { name: "TypeScript", icon: "file-code" }
+    { name: "Java", icon: "file-code" }
+  ]},
+    { category: "Frameworks", items: [
+    { name: "Express", icon: "server" },
+    { name: "Flask & FastAPI", icon: "code-2" },
+    { name: "Gin", icon: "zap" },
+    { name: "Spring Boot", icon: "file-code" }
   ]},
   { category: "Infrastructure", items: [
     { name: "Kubernetes", icon: "box" },
     { name: "AWS", icon: "cloud" },
-    { name: "Terraform", icon: "layers" },
-    { name: "Docker", icon: "package" }
+    { name: "GCP", icon: "cloudy" },
+    { name: "Linux Server", icon: "package" }
   ]},
   { category: "Data", items: [
     { name: "PostgreSQL", icon: "database" },
     { name: "Redis", icon: "cpu" },
-    { name: "Kafka", icon: "git-branch" },
+    { name: "MySQL", icon: "database" },
     { name: "ElasticSearch", icon: "bar-chart-2" }
   ]},
   { category: "Architecture", items: [

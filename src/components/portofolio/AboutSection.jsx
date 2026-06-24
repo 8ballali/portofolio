@@ -33,7 +33,7 @@ export default function AboutSection({ developer }) {
             {/* Tech metadata */}
             <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#706C67] mb-10 flex gap-8 flex-wrap">
               <span>Role // Full Stack Backend Lead</span>
-              <span>Focus // APIs · Systems · Infra</span>
+              <span>Focus // APIs · Systems · Cloud Infrastructure</span>
               <span>Open To // Full-Time Engineering Roles</span>
             </div>
 
@@ -49,9 +49,9 @@ export default function AboutSection({ developer }) {
             {/* Separator */}
             <div className="mt-10 pt-10 border-t border-[#D1CDC7] grid grid-cols-3 gap-6">
               {[
-                { metric: "4M+", label: "Daily API Requests" },
-                { metric: "99.9%", label: "Uptime SLA" },
-                { metric: "45%", label: "Avg Cost Reduction" },
+                { metric: "Zero", label: "Downtime Migration" },
+                { metric: "99%", label: "Uptime SLA" },
+                { metric: "10%", label: "Cloud Cost Reduction" },
               ].map((stat, i) => (
                 <div key={i}>
                   <div className="font-serif text-3xl font-bold text-[#1A1A1A]">{stat.metric}</div>

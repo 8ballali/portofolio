@@ -4,26 +4,47 @@ import {
   Server, Code2, Zap, FileCode,
   Box, Cloud, Layers, Package,
   Database, Cpu, GitBranch, BarChart2,
-  Layout, GitMerge, Network, RefreshCw
+  Layout, GitMerge, Network, RefreshCw, Cloudy
 } from "lucide-react";
 
 const iconMap = {
   server: Server, "code-2": Code2, zap: Zap, "file-code": FileCode,
-  box: Box, cloud: Cloud, layers: Layers, package: Package,
+  box: Box, cloud: Cloud, layers: Layers, package: Package, cloudy: Cloudy,
   database: Database, cpu: Cpu, "git-branch": GitBranch, "bar-chart-2": BarChart2,
   layout: Layout, "git-merge": GitMerge, network: Network, "refresh-cw": RefreshCw,
 };
 
 // Define relationships between skills for "stack synergy" hover
 const synergies = {
-  "Kubernetes": ["AWS", "Docker", "Terraform", "CI/CD"],
-  "AWS": ["Kubernetes", "Docker", "Terraform", "PostgreSQL"],
-  "Kafka": ["Go", "ClickHouse", "System Design"],
-  "Go": ["Kafka", "Kubernetes", "API Design", "Microservices"],
-  "Node.js": ["API Design", "PostgreSQL", "Redis", "Microservices"],
-  "Python": ["PostgreSQL", "System Design", "CI/CD"],
-  "PostgreSQL": ["Node.js", "Python", "Database Design"],
-  "Redis": ["Node.js", "Kafka", "System Design"],
+  // LANGUAGES & FRAMEWORKS
+  "Javascript": ["Express", "PostgreSQL", "Redis", "API Design", "Microservices"],
+  "Express": ["Javascript", "PostgreSQL", "Redis", "API Design"],
+  
+  "Python": ["Flask & FastAPI", "PostgreSQL", "System Design", "Microservices"],
+  "Flask & FastAPI": ["Python", "PostgreSQL", "Redis", "API Design"],
+  
+  "Go": ["Gin", "Kubernetes", "Redis", "API Design", "Microservices"],
+  "Gin": ["Go", "MySQL", "API Design", "Microservices"],
+  
+  "Java": ["Spring Boot", "MySQL", "System Design", "CI/CD"],
+  "Spring Boot": ["Java", "PostgreSQL", "System Design", "Microservices"],
+
+  // INFRASTRUCTURE & ARCHITECTURE
+  "Kubernetes": ["AWS", "GCP", "Linux Server", "CI/CD", "Microservices"],
+  "AWS": ["Kubernetes", "PostgreSQL", "Linux Server", "CI/CD"],
+  "GCP": ["Kubernetes", "MySQL", "Linux Server", "CI/CD"],
+  "Linux Server": ["Kubernetes", "AWS", "GCP", "CI/CD"],
+  
+  "System Design": ["Microservices", "API Design", "Kubernetes", "ElasticSearch"],
+  "API Design": ["Express", "Flask & FastAPI", "Gin", "Microservices"],
+  "Microservices": ["Kubernetes", "Redis", "ElasticSearch", "API Design", "System Design"],
+  "CI/CD": ["Kubernetes", "AWS", "GCP", "Linux Server"],
+
+  // DATA
+  "PostgreSQL": ["Express", "Flask & FastAPI", "Spring Boot", "AWS", "System Design"],
+  "MySQL": ["Gin", "Spring Boot", "GCP"],
+  "Redis": ["Express", "Flask & FastAPI", "Go", "Microservices", "System Design"],
+  "ElasticSearch": ["System Design", "Microservices", "PostgreSQL", "Linux Server"]
 };
 
 export default function SkillsSection({ skills }) {

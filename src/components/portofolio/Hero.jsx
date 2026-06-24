@@ -83,8 +83,8 @@ export default function Hero({ developer }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            {developer.name.split(" ").map((word, i) => (
-              <span key={i} className="block">{word}</span>
+            {developer.name.split("\n").map((line, i) => (
+              <span key={i} className="block">{line}</span>
             ))}
           </motion.h1>
 
@@ -140,6 +140,8 @@ export default function Hero({ developer }) {
             </button>
             <a
               href={developer.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full border border-[#1A1A1A] text-[#1A1A1A] font-mono text-[11px] tracking-[0.2em] uppercase px-6 py-4 text-center hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-all duration-300"
             >
               Download Resume

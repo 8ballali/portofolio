@@ -87,7 +87,7 @@ export default function ContactSection({ developer }) {
             Get In Touch
           </h2>
           <p className="mt-6 text-base text-[#706C67] font-light max-w-lg leading-relaxed">
-            Currently open to senior full-time engineering roles. If you're building something that requires architectural depth, let's talk.
+            Currently open to full-time Software Engineering and System Analyst roles. If you're building something that requires architectural depth, let's talk.
           </p>
         </motion.div>
 

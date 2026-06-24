@@ -87,12 +87,13 @@ function CaseStudyExpanded({ project, onClose }) {
             {project.downloadUrl && (
               <a
                 href={project.downloadUrl}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 className="flex items-center gap-2 bg-[#1A1A1A] text-[#F9F7F2] font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-3 hover:bg-[#3E4C3F] transition-colors duration-300"
               >
                 <Download size={12} />
-                {project.downloadLabel || "Download Doc"}
+                {project.downloadLabel || "Open Folder"}
               </a>
             )}
           </div>
