@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, SunMedium, X } from "lucide-react";
 
 const links = [
   { label: "Work", id: "work" },
@@ -10,12 +10,22 @@ const links = [
 export default function Nav({ name }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
+    setIsDark(document.documentElement.classList.contains("dark"));
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const nextIsDark = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", nextIsDark);
+    localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+    setIsDark(nextIsDark);
+    window.dispatchEvent(new CustomEvent("themechange", { detail: { isDark: nextIsDark } }));
+  };
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -53,14 +63,26 @@ export default function Nav({ name }) {
               ))}
             </div>
 
-            {/* Contact CTA */}
-            <div className="hidden md:block">
+            <div className="flex items-center gap-3">
               <button
-                onClick={() => scrollTo("contact")}
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] border border-[#1A1A1A] px-5 py-2 hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-all duration-300"
+                onClick={toggleTheme}
+                className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] border border-[#1A1A1A] px-4 py-2 hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-all duration-300 flex items-center gap-2"
+                aria-label={isDark ? "Switch to light mode" : "Switch to night mode"}
+                title={isDark ? "Switch to light mode" : "Switch to night mode"}
               >
-                Contact
+                {isDark ? <SunMedium size={14} /> : <Moon size={14} />}
+                <span className="hidden sm:inline">{isDark ? "Light" : "Night"}</span>
               </button>
+
+              {/* Contact CTA */}
+              <div className="hidden md:block">
+                <button
+                  onClick={() => scrollTo("contact")}
+                  className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] border border-[#1A1A1A] px-5 py-2 hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-all duration-300"
+                >
+                  Contact
+                </button>
+              </div>
             </div>
 
             {/* Mobile menu button */}

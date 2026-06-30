@@ -1,9 +1,15 @@
 import Home from './pages/Home';
+import CustomCursor from "@/components/portofolio/CustomCUrsor";
 
 function App() {
 
   return (
-    <Home />
+    <>
+      <CustomCursor />
+      <div id="app-shell">
+        <Home />
+      </div>
+    </>
   )
 }
 

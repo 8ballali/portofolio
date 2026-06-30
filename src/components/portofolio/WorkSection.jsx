@@ -17,7 +17,7 @@ export default function WorkSection({ projects }) {
             Work
           </p>
           <h2 className="font-serif text-[clamp(2rem,5vw,3rem)] font-bold uppercase text-[#1A1A1A] tracking-tight">
-            Selected Projects
+            Professional Projects
           </h2>
           <p className="mt-4 text-sm text-[#706C67] font-mono tracking-wider max-w-sm">
             Click any project for the full architecture deep-dive.

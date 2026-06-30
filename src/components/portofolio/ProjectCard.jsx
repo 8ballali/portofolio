@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Layers, GitMerge, Workflow, Cloud, X, ArrowUpRight, Download } from "lucide-react";
 
@@ -10,9 +11,45 @@ const iconMap = {
 };
 
 function CaseStudyExpanded({ project, onClose }) {
-  return (
+  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains("dark"));
+
+  useEffect(() => {
+    const onThemeChange = (event) => setIsDark(Boolean(event.detail?.isDark));
+    window.addEventListener("themechange", onThemeChange);
+    return () => window.removeEventListener("themechange", onThemeChange);
+  }, []);
+
+  const colors = isDark
+    ? {
+        shell: "bg-[#15120d]",
+        panel: "bg-[#15120d]",
+        muted: "text-[#A69A8A]",
+        primary: "text-[#E9E1D4]",
+        accent: "text-[#D4C4AA]",
+        border: "border-[#2A241A]",
+        line: "bg-[#2A241A]",
+        chipText: "text-[#D4C4AA]",
+        chipBg: "bg-[#2A241A]",
+        chipBorder: "border-[#2A241A]",
+        btn: "bg-[#E9E1D4] text-[#15120d] hover:bg-[#CFC3B1]",
+      }
+    : {
+        shell: "bg-[#F9F7F2]",
+        panel: "bg-[#F9F7F2]",
+        muted: "text-[#706C67]",
+        primary: "text-[#1A1A1A]",
+        accent: "text-[#3E4C3F]",
+        border: "border-[#D1CDC7]",
+        line: "bg-[#D1CDC7]",
+        chipText: "text-[#1A1A1A]",
+        chipBg: "bg-transparent",
+        chipBorder: "border-[#D1CDC7]",
+        btn: "bg-[#1A1A1A] text-[#F9F7F2] hover:bg-[#3E4C3F]",
+      };
+
+  return createPortal(
     <motion.div
-      className="fixed inset-0 z-50 bg-[#F9F7F2] overflow-y-auto"
+      className={`fixed inset-0 z-50 overflow-y-auto ${colors.shell}`}
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 40 }}
@@ -22,12 +59,12 @@ function CaseStudyExpanded({ project, onClose }) {
       <div className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         {/* Top bar */}
         <div className="flex items-center justify-between mb-16">
-          <span className="font-mono text-[11px] tracking-[0.25em] uppercase text-[#706C67]">
+          <span className={`font-mono text-[11px] tracking-[0.25em] uppercase ${colors.muted}`}>
             Case Study — {project.index}
           </span>
           <button
             onClick={onClose}
-            className="flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase text-[#706C67] hover:text-[#1A1A1A] transition-colors"
+            className={`flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] uppercase ${colors.muted} hover:${colors.primary} transition-colors`}
           >
             <span>Close</span>
             <X size={14} />
@@ -35,53 +72,112 @@ function CaseStudyExpanded({ project, onClose }) {
         </div>
 
         {/* Header */}
-        <div className="border-t border-[#D1CDC7] pt-12 mb-20">
+        <div className={`border-t ${colors.border} pt-12 mb-20`}>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
             <div>
-              <h2 className="font-serif text-[clamp(2.5rem,7vw,5rem)] leading-none tracking-tight text-[#1A1A1A] uppercase font-bold">
+              <h2 className={`font-serif text-[clamp(2.5rem,7vw,5rem)] leading-none tracking-tight uppercase font-bold ${colors.primary}`}>
                 {project.title}
               </h2>
-              <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#706C67] mt-4">
+              <p className={`font-mono text-[11px] tracking-[0.2em] uppercase mt-4 ${colors.muted}`}>
                 {project.subtitle}
               </p>
             </div>
             <div className="text-right">
-              <div className="text-[clamp(2rem,5vw,3.5rem)] font-serif font-bold text-[#3E4C3F] leading-none">
+              <div className={`text-[clamp(2rem,5vw,3.5rem)] font-serif font-bold leading-none ${colors.accent}`}>
                 {project.metric}
               </div>
-              <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#706C67] mt-2">
+              <div className={`font-mono text-[10px] tracking-[0.2em] uppercase mt-2 ${colors.muted}`}>
                 {project.metricLabel}
               </div>
             </div>
           </div>
         </div>
 
-        {/* 3-column architecture deep dive */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D1CDC7]">
+        {/* Details */}
+        <div className={`border-t ${colors.border} pt-10`}>
+          <h3 className={`font-serif text-[clamp(1.5rem,3vw,2.2rem)] leading-none tracking-tight uppercase font-bold ${colors.primary}`}>
+            Details
+          </h3>
+        </div>
+
+        {/* Vertical architecture deep dive */}
+        <div className="mt-8 flex flex-col gap-6">
           {[
-            { label: "01 / The Problem", content: project.problem, accent: false },
-            { label: "02 / The Solution", content: project.solution, accent: false },
-            { label: "03 / The Impact", content: project.impact, accent: true },
+            { label: "The Problem", content: project.problem, accent: false },
+            { label: "The Solution", content: project.solution, accent: false },
+            { label: "The Impact", content: project.impact, accent: true },
           ].map((col, i) => (
-            <div key={i} className="bg-[#F9F7F2] p-8 md:p-10">
-              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#706C67] mb-6">
-                {col.label}
-              </p>
-              <p
-                className={`text-base leading-relaxed font-light ${
-                  col.accent ? "text-[#3E4C3F]" : "text-[#1A1A1A]"
-                }`}
-              >
-                {col.content}
-              </p>
+            <div key={i} className={`p-8 md:p-10 border ${colors.border} ${colors.panel}`}>
+              <div className="flex flex-col gap-5">
+                <p className={`font-mono text-[10px] tracking-[0.25em] uppercase ${colors.muted}`}>
+                  {col.label}
+                </p>
+                <p
+                  className={`text-base leading-relaxed font-light max-w-3xl text-justify ${
+                    col.accent ? colors.accent : colors.primary
+                  }`}
+                >
+                  {col.content}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
+        {/* Resource */}
+        {((Array.isArray(project.resources) && project.resources.length > 0) || project.resourceLabel || project.resourceUrl || project.restriction) ? (
+          <div className={`mt-12 border-t pt-10 ${colors.border}`}>
+            <h3 className={`font-serif text-[clamp(1.5rem,3vw,2.2rem)] leading-none tracking-tight uppercase font-bold ${colors.primary}`}>
+              Resource
+            </h3>
+
+            {project.restriction ? (
+              <p className={`mt-6 text-sm leading-relaxed font-light max-w-3xl text-justify italic ${colors.muted}`}>
+                {project.restriction === true
+                  ? "Some supporting materials are restricted due to confidentiality agreements with related parties."
+                  : project.restriction}
+              </p>
+            ) : null}
+
+            {Array.isArray(project.resources) && project.resources.length > 0 ? (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {project.resources.map((resource, resourceIndex) => {
+                  const buttonClassName = `inline-flex w-fit items-center justify-center font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-3 transition-colors duration-300 ${colors.btn}`;
+
+                  return resource.url ? (
+                    <a
+                      key={resourceIndex}
+                      href={resource.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={buttonClassName}
+                    >
+                      {resource.label}
+                    </a>
+                  ) : null;
+                })}
+              </div>
+            ) : (project.resourceLabel || project.resourceUrl) ? (
+              <div className="mt-8 flex flex-wrap gap-3">
+                {project.resourceUrl ? (
+                  <a
+                    href={project.resourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex w-fit items-center justify-center font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-3 transition-colors duration-300 ${colors.btn}`}
+                  >
+                    {project.resourceLabel || "Open Resource"}
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
         {/* Tech stack */}
-        <div className="mt-12 border-t border-[#D1CDC7] pt-10">
+        <div className={`mt-12 border-t pt-10 ${colors.border}`}>
           <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-            <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#706C67]">
+            <p className={`font-mono text-[10px] tracking-[0.25em] uppercase ${colors.muted}`}>
               Tech Stack
             </p>
             {project.downloadUrl && (
@@ -90,7 +186,7 @@ function CaseStudyExpanded({ project, onClose }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-2 bg-[#1A1A1A] text-[#F9F7F2] font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-3 hover:bg-[#3E4C3F] transition-colors duration-300"
+                className={`flex items-center gap-2 font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-3 transition-colors duration-300 ${colors.btn}`}
               >
                 <Download size={12} />
                 {project.downloadLabel || "Open Folder"}
@@ -101,7 +197,7 @@ function CaseStudyExpanded({ project, onClose }) {
             {project.techStack.map((t, i) => (
               <span
                 key={i}
-                className="font-mono text-[11px] tracking-[0.15em] uppercase border border-[#D1CDC7] text-[#706C67] px-4 py-2"
+                className={`font-mono text-[11px] tracking-[0.15em] uppercase border px-4 py-2 ${colors.chipBorder} ${colors.chipText} ${colors.chipBg}`}
               >
                 {t}
               </span>
@@ -110,6 +206,7 @@ function CaseStudyExpanded({ project, onClose }) {
         </div>
       </div>
     </motion.div>
+    , document.body
   );
 }
 

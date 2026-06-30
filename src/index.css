@@ -93,6 +93,18 @@
     background-color: #F9F7F2;
   }
 
+  .dark body {
+    background-color: #0b0f14;
+  }
+
+  .dark #app-shell {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  .dark img {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
   .font-serif {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   }
