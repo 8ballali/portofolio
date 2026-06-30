@@ -28,11 +28,11 @@ export default function Hero({ developer }) {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col md:flex-row max-w-7xl mx-auto w-full px-8 md:px-16 pt-32 md:pt-0">
+      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full px-6 sm:px-8 md:px-12 lg:px-16 pt-28 sm:pt-32 lg:pt-0">
 
         {/* LEFT — Name block */}
         <div
-          className="flex-1 flex flex-col justify-center relative"
+          className="flex-1 flex flex-col justify-center relative max-w-4xl"
           onMouseEnter={() => setWireVisible(true)}
           onMouseLeave={() => setWireVisible(false)}
           ref={nameRef}
@@ -78,7 +78,7 @@ export default function Hero({ developer }) {
 
           {/* Hero name */}
           <motion.h1
-            className="font-serif text-[clamp(4rem,12vw,8rem)] leading-none tracking-[-0.02em] text-[#1A1A1A] uppercase font-bold select-none"
+            className="font-serif text-[clamp(3.25rem,14vw,5.75rem)] md:text-[clamp(4rem,10vw,7rem)] lg:text-[clamp(5rem,8vw,8rem)] leading-none tracking-[-0.02em] text-[#1A1A1A] uppercase font-bold select-none"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -101,13 +101,13 @@ export default function Hero({ developer }) {
 
         {/* RIGHT — Meta + CTAs */}
         <motion.div
-          className="flex flex-col justify-center md:pl-20 md:w-72 lg:w-80 pb-16 md:pb-0 mt-12 md:mt-0"
+          className="flex flex-col justify-center lg:pl-20 lg:w-80 pb-16 lg:pb-0 mt-12 lg:mt-0 w-full max-w-xl"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
         >
           {/* Divider */}
-          <div className="hidden md:block w-full h-px bg-[#D1CDC7] mb-12" />
+          <div className="hidden lg:block w-full h-px bg-[#D1CDC7] mb-12" />
 
           {/* Value prop */}
           <p className="text-sm text-[#706C67] leading-relaxed mb-12 font-light">

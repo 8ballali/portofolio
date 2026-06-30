@@ -60,7 +60,7 @@ export default function SkillsSection({ skills }) {
 
   return (
     <section id="skills" className="bg-[#F9F7F2]" style={{ cursor: "none" }}>
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Header */}
         <motion.div
           className="mb-16"
@@ -91,9 +91,9 @@ export default function SkillsSection({ skills }) {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: ci * 0.08 }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-px bg-[#D1CDC7]">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-px bg-[#D1CDC7]">
                 {/* Category label */}
-                <div className="bg-[#F9F7F2] p-6 flex items-center">
+                <div className="bg-[#F9F7F2] p-5 sm:p-6 flex items-center">
                   <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-[#706C67]">
                     {cat.category}
                   </span>
@@ -105,7 +105,7 @@ export default function SkillsSection({ skills }) {
                   return (
                     <div
                       key={skill.name}
-                      className="bg-[#F9F7F2] p-6 flex items-center gap-3 transition-all duration-200 hover:bg-[#1A1A1A] group"
+                      className="bg-[#F9F7F2] p-5 sm:p-6 flex items-center gap-3 transition-all duration-200 hover:bg-[#1A1A1A] group"
                       style={{ opacity: hoveredSkill && !related ? 0.25 : 1, cursor: "none" }}
                       onMouseEnter={() => setHoveredSkill(skill.name)}
                       onMouseLeave={() => setHoveredSkill(null)}

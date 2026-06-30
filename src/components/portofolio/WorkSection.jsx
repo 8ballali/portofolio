@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 export default function WorkSection({ projects }) {
   return (
     <section id="work" className="bg-[#F9F7F2]" style={{ cursor: "none" }}>
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Section header */}
         <motion.div
           className="mb-16"
@@ -25,7 +25,7 @@ export default function WorkSection({ projects }) {
         </motion.div>
 
         {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#D1CDC7]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[#D1CDC7]">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

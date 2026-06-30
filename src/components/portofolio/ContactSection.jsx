@@ -71,7 +71,7 @@ export default function ContactSection({ developer }) {
 
   return (
     <section id="contact" className="bg-[#F9F7F2]" style={{ cursor: "none" }}>
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Header */}
         <motion.div
           className="mb-16"
@@ -91,10 +91,10 @@ export default function ContactSection({ developer }) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D1CDC7]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#D1CDC7]">
           {/* Form — 2 cols */}
           <motion.div
-            className="md:col-span-2 bg-[#F9F7F2] p-10 md:p-14"
+            className="lg:col-span-2 bg-[#F9F7F2] p-8 sm:p-10 lg:p-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -116,7 +116,7 @@ export default function ContactSection({ developer }) {
                   </div>
                 )}
                 {/* Name + Email row */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                   <div>
                     <input
                       type="text"
@@ -236,7 +236,7 @@ export default function ContactSection({ developer }) {
 
       {/* Footer */}
       <div className="w-full h-px bg-[#D1CDC7]" />
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#D1CDC7]">
           © {developer.name} {new Date().getFullYear()}
         </p>

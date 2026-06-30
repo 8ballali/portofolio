@@ -91,6 +91,13 @@
   body {
     @apply bg-background text-foreground font-body;
     background-color: #F9F7F2;
+    overflow-x: hidden;
+  }
+
+  html,
+  #root {
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .dark body {
@@ -115,5 +122,11 @@
 
   * {
     cursor: none !important;
+  }
+
+  @media (pointer: coarse) {
+    * {
+      cursor: auto !important;
+    }
   }
 }

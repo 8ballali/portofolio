@@ -40,7 +40,7 @@ export default function Nav({ name }) {
         }`}
         style={{ cursor: "none" }}
       >
-        <div className="max-w-7xl mx-auto px-8 md:px-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <button
@@ -51,7 +51,7 @@ export default function Nav({ name }) {
             </button>
 
             {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-10">
               {links.map((l) => (
                 <button
                   key={l.id}
@@ -75,7 +75,7 @@ export default function Nav({ name }) {
               </button>
 
               {/* Contact CTA */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <button
                   onClick={() => scrollTo("contact")}
                   className="font-mono text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A] border border-[#1A1A1A] px-5 py-2 hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-all duration-300"
@@ -87,7 +87,7 @@ export default function Nav({ name }) {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden text-[#1A1A1A] p-1"
+              className="lg:hidden text-[#1A1A1A] p-1"
               onClick={() => setMenuOpen((v) => !v)}
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -99,7 +99,7 @@ export default function Nav({ name }) {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden bg-[#F9F7F2] border-t border-[#D1CDC7] px-8 py-6 flex flex-col gap-5">
+          <div className="lg:hidden bg-[#F9F7F2] border-t border-[#D1CDC7] px-6 sm:px-8 py-6 flex flex-col gap-5">
             {[...links, { label: "Contact", id: "contact" }].map((l) => (
               <button
                 key={l.id}

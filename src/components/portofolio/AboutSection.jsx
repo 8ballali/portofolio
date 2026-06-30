@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function AboutSection({ developer }) {
   return (
     <section id="about" className="bg-[#F9F7F2]" style={{ cursor: "none" }}>
-      <div className="max-w-7xl mx-auto px-8 md:px-16 py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 py-24 md:py-32">
         {/* Header */}
         <motion.div
           className="mb-16"
@@ -22,14 +22,14 @@ export default function AboutSection({ developer }) {
 
         {/* Card */}
         <motion.div
-          className="border border-[#D1CDC7] grid grid-cols-1 md:grid-cols-3 gap-px bg-[#D1CDC7]"
+          className="border border-[#D1CDC7] grid grid-cols-1 lg:grid-cols-3 gap-px bg-[#D1CDC7]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Bio — 2 cols */}
-          <div className="md:col-span-2 bg-[#F9F7F2] p-10 md:p-14">
+          <div className="lg:col-span-2 bg-[#F9F7F2] p-8 sm:p-10 lg:p-14">
             {/* Tech metadata */}
             <div className="font-mono text-[10px] tracking-[0.2em] uppercase text-[#706C67] mb-10 flex gap-8 flex-wrap">
               <span>Role // Full Stack Backend Lead</span>
@@ -47,7 +47,7 @@ export default function AboutSection({ developer }) {
             ))}
 
             {/* Separator */}
-            <div className="mt-10 pt-10 border-t border-[#D1CDC7] grid grid-cols-3 gap-6">
+            <div className="mt-10 pt-10 border-t border-[#D1CDC7] grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { metric: "Zero", label: "Downtime Migration" },
                 { metric: "99%", label: "Uptime SLA" },
