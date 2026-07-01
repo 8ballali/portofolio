@@ -45,9 +45,10 @@ export default function Nav({ name }) {
             {/* Logo */}
             <button
               onClick={() => scrollTo("hero")}
-              className="font-mono text-xs tracking-[0.25em] uppercase text-[#1A1A1A] hover:text-[#706C67] transition-colors"
+              className="font-mono text-xs tracking-[0.25em] uppercase text-[#1A1A1A] hover:text-[#706C67] transition-colors text-left"
             >
-              {name}
+              <span className="sm:hidden">{name.replace(/^Muhammad\b/i, "M.").replace(/\n/g, " ")}</span>
+              <span className="hidden sm:inline">{name.replace(/\n/g, " ")}</span>
             </button>
 
             {/* Desktop nav */}
@@ -83,15 +84,15 @@ export default function Nav({ name }) {
                   Contact
                 </button>
               </div>
-            </div>
 
-            {/* Mobile menu button */}
-            <button
-              className="lg:hidden text-[#1A1A1A] p-1"
-              onClick={() => setMenuOpen((v) => !v)}
-            >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+              {/* Mobile menu button */}
+              <button
+                className="lg:hidden text-[#1A1A1A] p-1"
+                onClick={() => setMenuOpen((v) => !v)}
+              >
+                {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
           {/* Underline */}
           <div className="h-px w-full bg-[#D1CDC7]" />

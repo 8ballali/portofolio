@@ -62,11 +62,11 @@ export default function AboutSection({ developer }) {
           </div>
 
           {/* Photo — 1 col */}
-          <div className="bg-[#F9F7F2] relative overflow-hidden min-h-[300px] md:min-h-0">
+          <div className="bg-[#F9F7F2] relative overflow-hidden min-h-[350px] md:min-h-[550px] lg:min-h-0">
             <img
               src={developer.photo}
               alt="Developer portrait"
-              className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+              className="absolute inset-0 w-full h-full object-cover object-[center_38%] grayscale"
             />
             {/* Subtle overlay with metadata */}
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-[#F9F7F2]/90">
