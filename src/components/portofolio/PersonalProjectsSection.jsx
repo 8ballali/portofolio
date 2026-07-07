@@ -4,8 +4,20 @@ import ProjectCard from "./ProjectCard";
 
 export default function PersonalProjectsSection({ projects }) {
   const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projects : projects.slice(0, 4);
-  const hasMoreProjects = projects.length > 4;
+  const selectedProjects = projects
+    .filter((project) => project.showInSection !== false)
+    .sort((left, right) => {
+      const leftFeatured = left.featured ? 1 : 0;
+      const rightFeatured = right.featured ? 1 : 0;
+
+      if (leftFeatured !== rightFeatured) {
+        return rightFeatured - leftFeatured;
+      }
+
+      return Number(left.index) - Number(right.index);
+    });
+  const visibleProjects = showAll ? selectedProjects : selectedProjects.slice(0, 4);
+  const hasMoreProjects = selectedProjects.length > 4;
 
   return (
     <section id="personal-projects" className="bg-[#F9F7F2]" style={{ cursor: "none" }}>
@@ -41,7 +53,7 @@ export default function PersonalProjectsSection({ projects }) {
               onClick={() => setShowAll((current) => !current)}
               className="font-mono text-[11px] tracking-[0.25em] uppercase px-5 py-3 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F9F7F2] transition-colors duration-300"
             >
-              {showAll ? "Show Less" : "Show More"}
+              {showAll ? "View Less" : "View More"}
             </button>
           </div>
         )}

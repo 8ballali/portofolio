@@ -11,7 +11,7 @@ export const developer = {
   email: "iqbalalisaidil@gmail.com",
   github: "https://github.com/8ballali",
   linkedin: "https://linkedin.com/in/saidilmuna",
-  resumeUrl: "https://drive.google.com/drive/folders/15ctYFDGCDaSfAweZ3LrhubEwEjjcLMvi?usp=sharing",
+  resumeUrl: "https://res.cloudinary.com/dzfsjfs2v/image/upload/v1783413841/CV_Iqbal_New_Updated_jlxfty.pdf",
   photo: "https://res.cloudinary.com/dzfsjfs2v/image/upload/v1782801032/developer-portrait_wpyu5v.jpg"
 };
 
@@ -99,6 +99,8 @@ export const personalProjects = [
     problem: "In traditional smart farming setups, sensor data stored on centralized servers remains vulnerable to data manipulation, single points of failure, and unauthorized interference. For digital farmers, this lack of immutable transparency risks compromised monitoring accuracy, making it difficult to guarantee untampered, high-fidelity environmental records for agricultural decision-making.",
     solution: "Developed a decentralized IoT monitoring system that pairs DHT22 and LM35 sensors with an Arduino over a local Wi-Fi network. The architecture utilizes a Flask backend integrated with Ether.js to securely bridge the hardware data directly into a local Ethereum blockchain network, ensuring immutable logging of environmental metrics.",
     impact: "The network establishes a fully tamper-proof and transparent data pipeline, making it impossible for unauthorized entities to modify or erase sensor history. By eliminating data fraud and external interference, the system provides digital farmers with verifiable, absolute truth regarding their crop conditions.",
+    featured: true,
+    showInSection: true,
     techStack: ["IOT", "EtherJS", "Flask", "Ethereum", "ESP32", "DHT22", "LM35"]  
   },
   {
@@ -114,6 +116,8 @@ export const personalProjects = [
     problem: "Building a scalable educational platform requires managing complex relational data—such as multi-user enrollments, activity tracking, and analytics—while maintaining consistent and isolated development environments.",
     solution: "Developed a robust REST API using Django and MySQL, containerized entirely with Docker to streamline deployment and ensure environment consistency across features like batch enrollment and data tracking.",
     impact: "Delivers a secure, containerized backend capable of processing complex queries for activity dashboards and course analytics, ensuring zero deployment discrepancies and high data integrity.",
+    featured: true,
+    showInSection: true,
     techStack: ["Python", "Django", "MySQL", "Docker", "REST API"]
   },
   {
@@ -129,6 +133,8 @@ export const personalProjects = [
     problem: "Early detection of diabetes is critical to prevent severe chronic complications, yet clinical data often suffers from high-dimensional complexity and neural network training is highly prone to severe overfitting.",
     solution: "Developed a deep Multilayer Perceptron (MLP) classifier featuring 128-64-32 neuron hidden layers, integrated with a 0.3 Dropout rate and 0.001 Kernel Regularizer, optimized via automated Random Search hyperparameter tuning.",
     impact: "Successfully mitigates model overfitting, stabilizing the validation loss and delivering a high-fidelity classification model that achieves a peak validation accuracy of 74.59% on public health records.",
+    featured: true,
+    showInSection: true,
     resources: [
       { label: "Source Code", url: "https://www.kaggle.com/code/hanifcahyoprasetyo/diabetes-kelompok-7" },
       { label: "Paper", url: "https://res.cloudinary.com/dzfsjfs2v/image/upload/v1782825928/Laporan_Kelompok_7_Tugas_Akhir_Pembelajaran_Mesin_Mendalam_auzryb.pdf" },
@@ -152,6 +158,28 @@ export const personalProjects = [
       { label: "Report", url: "https://res.cloudinary.com/dzfsjfs2v/image/upload/v1782828571/Laporan_Praktikum_Reverse_Engineering_maefgi.pdf" },
     ],
     impact: "Successfully bypassed the software's registration lock and repurposed the error routine into a deterministic runtime key generator, proving the high risks of lacking anti-tampering defenses[cite: 1212, 1336, 1377, 1381].",
+    featured: true,
+    showInSection: true,
+    techStack: ["x32dbg", "Assembly x86", "Dynamic Debugging", "Binary Patching"]
+  },
+    {
+    id: "Software Reverse Engineering dua",
+    index: "04",
+    title: "Executable Vulnerability Assessment",
+    subtitle: "Binary Analysis & Registration Bypass",
+    metric: "Binary Patching",
+    metricLabel: "Validation Bypass",
+    tags: ["x32dbg", "Assembly (x86)", "Reverse Engineering"],
+    shortDescription: "A security assessment on a compiled executable to analyze registration check logic, execute control-flow patching, and identify client-side validation vulnerabilities.",
+    iconType: "shield",
+    problem: "Analyzing local execution flow without source code access to expose how unsafe client-side logic can be fully exploited and manipulated at the assembly level[cite: 807, 822].",
+    solution: "Conducted static and dynamic analysis using x32dbg to locate string references[cite: 827, 830, 831]. Intercepted the validation routine by forcing control-flow redirection (patching conditional `JNE` to unconditional `JMP`) and modifying instructions to dump memory contents[cite: 966, 1046, 1225].",
+    resources: [
+      { label: "Report", url: "https://res.cloudinary.com/dzfsjfs2v/image/upload/v1782828571/Laporan_Praktikum_Reverse_Engineering_maefgi.pdf" },
+    ],
+    impact: "Successfully bypassed the software's registration lock and repurposed the error routine into a deterministic runtime key generator, proving the high risks of lacking anti-tampering defenses[cite: 1212, 1336, 1377, 1381].",
+    featured: true,
+    showInSection: false,
     techStack: ["x32dbg", "Assembly x86", "Dynamic Debugging", "Binary Patching"]
   }
 ];
