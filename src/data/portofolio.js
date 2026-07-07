@@ -180,7 +180,7 @@ export const personalProjects = [
     impact: "Successfully bypassed the software's registration lock and repurposed the error routine into a deterministic runtime key generator, proving the high risks of lacking anti-tampering defenses[cite: 1212, 1336, 1377, 1381].",
     featured: true,
     showInSection: false,
-    techStack: ["x32dbg", "Assembly x86", "Dynamic Debugging", "Binary Patching"]
+    techStack: ["x32dbg", "Assembly x86", "Dynamic Debugging", "Binary Patching","Static Analysis"]
   }
 ];
 
